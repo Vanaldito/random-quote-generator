@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { getRandomQuote } from "./services/get-random-quote";
 
 import Quote from "./components/Quote";
+import Loader from "./components/Loader";
+import RandomIcon from "./components/Icons/Random";
 
 import { QuoteInfo } from "./types";
 
 import "./App.css";
-import RandomIcon from "./components/Icons/Random";
 
 export default function App() {
   const [quoteInfo, setQuoteInfo] = useState<QuoteInfo | null>(null);
@@ -17,25 +18,33 @@ export default function App() {
   useEffect(generateNewQuote, []);
 
   function generateNewQuote() {
+    setQuoteInfo(null);
+
     getRandomQuote().then(info => setQuoteInfo(info));
   }
 
-  if (!quoteInfo) return null;
+  const loadingQuote = quoteInfo === null;
 
   return (
     <main>
-      <button
-        className="new-quote-button"
-        type="button"
-        onClick={generateNewQuote}
-      >
-        random <RandomIcon />
-      </button>
-      <Quote
-        text={quoteInfo.quoteText}
-        author={quoteInfo.quoteAuthor}
-        genre={quoteInfo.quoteGenre}
-      />
+      {loadingQuote ? (
+        <Loader />
+      ) : (
+        <>
+          <button
+            className="new-quote-button"
+            type="button"
+            onClick={generateNewQuote}
+          >
+            random <RandomIcon />
+          </button>
+          <Quote
+            text={quoteInfo.quoteText}
+            author={quoteInfo.quoteAuthor}
+            genre={quoteInfo.quoteGenre}
+          />
+        </>
+      )}
     </main>
   );
 }

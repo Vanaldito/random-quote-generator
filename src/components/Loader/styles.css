@@ -1,0 +1,26 @@
+.loader-container {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 6px solid #e3e3e3;
+  border-top-color: #4fafff;
+  border-radius: 50%;
+  animation: 1s loader-rotation ease infinite;
+}
+
+@keyframes loader-rotation {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
