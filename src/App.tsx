@@ -6,6 +6,7 @@ import Quote from "./components/Quote";
 import { QuoteInfo } from "./types";
 
 import "./App.css";
+import RandomIcon from "./components/Icons/Random";
 
 export default function App() {
   const [quoteInfo, setQuoteInfo] = useState<QuoteInfo | null>(null);
@@ -28,7 +29,7 @@ export default function App() {
         type="button"
         onClick={generateNewQuote}
       >
-        random
+        random <RandomIcon />
       </button>
       <Quote
         text={quoteInfo.quoteText}
