@@ -24,3 +24,47 @@ main {
   gap: 5px;
   cursor: pointer;
 }
+
+.quote-info {
+  display: block;
+  margin: 0 auto;
+  padding: 15px 80px;
+  width: 100%;
+  max-width: 760px;
+  text-align: left;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.quote-info:hover {
+  background-color: #333333;
+}
+
+.quote-info:hover::after {
+  content: url("right-arrow.svg");
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #f2f2f2;
+  position: absolute;
+  right: 25px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.quote-author {
+  font-size: 2rem;
+}
+
+.quote-info:hover .quote-author {
+  color: #f2f2f2;
+}
+
+.quote-genre {
+  font-size: 1.4rem;
+  color: #828282;
+}
