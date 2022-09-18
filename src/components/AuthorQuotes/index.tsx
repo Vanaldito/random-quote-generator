@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { getQuotesByAuthor } from "../../services/get-quotes-by-author";
+
 import Quote from "../Quote";
+import Loader from "../Loader";
+
 import { QuoteInfo } from "../../types";
 
 import "./styles.css";
@@ -16,7 +19,11 @@ export default function AuthorQuotes({ author }: AuthorQuotesProps) {
     getQuotesByAuthor(author).then(quotes => setQuotes(quotes));
   }, []);
 
-  return (
+  const loadingQuotes = quotes.length === 0;
+
+  return loadingQuotes ? (
+    <Loader />
+  ) : (
     <div>
       <h2 className="author-quotes__title">{author}</h2>
       {quotes.map(quoteInfo => (
