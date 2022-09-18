@@ -1,0 +1,38 @@
+.quote {
+  padding: 0 80px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quote__text {
+  font-size: 2.6rem;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.quote__text p::before {
+  content: open-quote;
+}
+
+.quote__text p::after {
+  content: close-quote;
+}
+
+.quote__text::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 8px;
+  position: absolute;
+  background-color: #f7df94;
+  left: -60px;
+}
+
+.quote__author {
+  font-size: 2.4rem;
+}
+
+.quote__genre {
+  font-size: 1.4rem;
+  color: #828282;
+}
